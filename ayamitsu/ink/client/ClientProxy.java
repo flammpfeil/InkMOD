@@ -1,9 +1,8 @@
 package ayamitsu.ink.client;
 
+import net.minecraftforge.client.MinecraftForgeClient;
 import ayamitsu.ink.InkMod;
 import ayamitsu.ink.common.CommonProxy;
-
-import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends CommonProxy
 {

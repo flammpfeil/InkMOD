@@ -1,32 +1,32 @@
 package ayamitsu.ink.common;
 
-import ayamitsu.ink.*;
-
-import net.minecraft.src.*;
-
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.EntitySquid;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.Event;
-import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
+import ayamitsu.ink.InkMod;
 
 public class SquidInteractHook
 {
 	/**
-	 * ‚±‚ÌŽd‘g‚ÝˆÈŠO‚É•û–@‚ ‚Á‚½‚ç‚¢‚¢‚È
+	 * ï¿½ï¿½ï¿½ÌŽdï¿½gï¿½ÝˆÈŠOï¿½É•ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç‚¢ï¿½ï¿½ï¿½ï¿½
 	 */
 	private boolean interact = false;
-	
+
 	@ForgeSubscribe
 	public void onInteractEntity(EntityInteractEvent event)
 	{
 		Entity entity = event.target;
 		EntityPlayer player = event.entityPlayer;
-		
+
 		if (entity instanceof EntitySquid)
 		{
 			ItemStack is = player.inventory.getCurrentItem();
-			
+
 			if (is != null && is.itemID == Item.bucketEmpty.shiftedIndex)
 			{
 				if (--is.stackSize <= 0)
@@ -37,12 +37,12 @@ public class SquidInteractHook
 				{
 					player.dropPlayerItem(new ItemStack(InkMod.bucketInk.shiftedIndex, 1, 0));
 				}
-				
+
 				this.interact = true;
 			}
 		}
 	}
-	
+
 	@ForgeSubscribe
 	public void onFillBucket(FillBucketEvent event)
 	{
@@ -50,7 +50,7 @@ public class SquidInteractHook
 		{
 			event.setCanceled(true);
 		}
-		
+
 		this.interact = false;
 	}
 }
