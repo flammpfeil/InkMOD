@@ -13,7 +13,7 @@ import ayamitsu.ink.InkMod;
 public class SquidInteractHook
 {
 	/**
-	 * ���̎d�g�݈ȊO�ɕ�@�������炢����
+	 * interact with squid before FillBucketEvent
 	 */
 	private boolean interact = false;
 
@@ -27,7 +27,7 @@ public class SquidInteractHook
 		{
 			ItemStack is = player.inventory.getCurrentItem();
 
-			if (is != null && is.itemID == Item.bucketEmpty.shiftedIndex)
+			if (is != null && is.itemID == Item.bucketEmpty.itemID)
 			{
 				if (--is.stackSize <= 0)
 				{
@@ -35,7 +35,7 @@ public class SquidInteractHook
 				}
 				else if (!player.inventory.addItemStackToInventory(new ItemStack(InkMod.bucketInk)))
 				{
-					player.dropPlayerItem(new ItemStack(InkMod.bucketInk.shiftedIndex, 1, 0));
+					player.dropPlayerItem(new ItemStack(InkMod.bucketInk.itemID, 1, 0));
 				}
 
 				this.interact = true;
