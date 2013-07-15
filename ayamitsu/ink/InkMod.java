@@ -33,7 +33,7 @@ public class InkMod
 	public static Item bucketInk;
 	public static int bucketInkId;
 
-	@Mod.PreInit
+	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -53,10 +53,10 @@ public class InkMod
 		}
 	}
 
-	@Mod.Init
+	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		this.bucketInk = (new ItemBucketInk(this.bucketInkId - 256)).setUnlocalizedName("bucketInk").setContainerItem(Item.bucketEmpty);
+		this.bucketInk = (new ItemBucketInk(this.bucketInkId - 256)).setUnlocalizedName("ayamitsu.ink.bucketink").func_111206_d("ink:bucketink").setContainerItem(Item.bucketEmpty);
 		LanguageRegistry.instance().addNameForObject(this.bucketInk, "en_US", "Ink Bucket");
 		LanguageRegistry.instance().addNameForObject(this.bucketInk, "ja_JP", "イカ墨バケツ");
 		MinecraftForge.EVENT_BUS.register(new SquidInteractHook());

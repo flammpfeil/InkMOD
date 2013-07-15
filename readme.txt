@@ -1,4 +1,4 @@
-【MOD】InkMOD_1.4.6_v1.0.0
+【MOD】InkMOD-1.6.2-v1.0.0
 
 【概要】
 バケツでイカ墨がとれるMODです。
@@ -7,7 +7,7 @@
 飲むと牛乳みたいにポーションの効果がきえます。
 
 【前提MOD】
-・MinecraftForge(開発時は#383)
+・MinecraftForge(開発時は#790)
 
 【導入手順】
 1.META-INFを消して前提MODを導入
