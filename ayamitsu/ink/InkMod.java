@@ -6,12 +6,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import ayamitsu.ink.common.ItemBucketInk;
 import ayamitsu.ink.common.SquidInteractHook;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -19,11 +24,11 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @Mod(
 	modid  = "InkMod",
 	name = "InkMod",
-	version = "1.0.0"
+	version = "@VERSION@"
 )
 @NetworkMod(
 	clientSideRequired = true,
-	serverSideRequired = false
+	serverSideRequired = true
 )
 public class InkMod
 {
@@ -31,9 +36,9 @@ public class InkMod
 	public static InkMod instance;
 
 	public static Item bucketInk;
-	public static int bucketInkId;
+	public static int bucketInkId = 12300;
 
-	@Mod.EventHandler
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -41,7 +46,7 @@ public class InkMod
 		try
 		{
 			config.load();
-			this.bucketInkId = config.getItem("Ink Bucket", 12300).getInt(12300);
+			this.bucketInkId = config.getItem("Ink Bucket", bucketInkId).getInt();
 		}
 		catch (Exception e)
 		{
@@ -53,14 +58,23 @@ public class InkMod
 		}
 	}
 
-	@Mod.EventHandler
+	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		this.bucketInk = (new ItemBucketInk(this.bucketInkId - 256)).setUnlocalizedName("ayamitsu.ink.bucketink").func_111206_d("ink:bucketink").setContainerItem(Item.bucketEmpty);
+		this.bucketInk = (new ItemBucketInk(this.bucketInkId)).setUnlocalizedName("ayamitsu.ink.bucketink").setTextureName("ink:bucketink").setContainerItem(Item.bucketEmpty);
 		LanguageRegistry.instance().addNameForObject(this.bucketInk, "en_US", "Ink Bucket");
 		LanguageRegistry.instance().addNameForObject(this.bucketInk, "ja_JP", "イカ墨バケツ");
 		MinecraftForge.EVENT_BUS.register(new SquidInteractHook());
 		OreDictionary.registerOre("dyeBlack", new ItemStack(this.bucketInk.itemID, 1, 0));
+	}
+
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		if(FluidRegistry.isFluidRegistered("myst.ink.black")){
+			Fluid mystInk = FluidRegistry.getFluid("myst.ink.black");
+			FluidContainerRegistry.registerFluidContainer(mystInk, new ItemStack(bucketInk), FluidContainerRegistry.EMPTY_BUCKET);
+		}
 	}
 
 }
