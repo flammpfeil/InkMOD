@@ -1,4 +1,3 @@
-<<<<<<< master
 ã€MODã€‘InkMOD-@MC_VERSION@-v@VERSION@
 
 ã€æ¦‚è¦ã€‘
@@ -22,27 +21,3 @@
 
 by ayamitsuï¼ˆã‚ã‚„ã¿ã¤ï¼‰
 modded by Ferne
-=======
-yMODzInkMOD_1.4.6_v1.0.0
-
-yŠT—vz
-ƒoƒPƒc‚ÅƒCƒJ–n‚ª‚Æ‚ê‚éMOD‚Å‚·B
-ƒCƒJ‚ð“|‚³‚¸‚µ‚ÄƒCƒJ–n‚ª‚Æ‚ê‚Ü‚·B
-ƒŒƒVƒs‚Ì‚½‚ß‚ÌŽg—p‚ªŽå‚É‚È‚è‚Ü‚·B
-ˆù‚Þ‚Æ‹“û‚Ý‚½‚¢‚Éƒ|[ƒVƒ‡ƒ“‚ÌŒø‰Ê‚ª‚«‚¦‚Ü‚·B
-
-y‘O’ñMODz
-EMinecraftForge(ŠJ”­Žž‚Í#383)
-
-y“±“üŽè‡z
-1.META-INF‚ðÁ‚µ‚Ä‘O’ñMOD‚ð“±“ü
-2.‚±‚ÌMOD‚ðminecraft.jar‚É’¼Ú‚¢‚ê‚é‚©modsƒtƒHƒ‹ƒ_‚Ézipƒtƒ@ƒCƒ‹‚Ì‚Ü‚Ü‚¢‚ê‚é
-3.Š®—¹
-
-y—˜—p‹K–ñz
-E‰ü•ÏŽ©—R
-E‰ü•Ï‚µ‚È‚¢‚Å‚Ì“ñŽŸ”z•z‚¾‚ßA‰ü•ÏŒã‚È‚çŽ©—R
-E¤—p—˜—p‹ÖŽ~
-
-by ayamitsui‚ ‚â‚Ý‚Âj
->>>>>>> 0d20faa update for 1.6.2 of forge#790
